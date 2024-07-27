@@ -1,0 +1,44 @@
+.add-new-assignment-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-assignment-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.form-line-1{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.add-assignment-required-files{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+:host ::ng-deep .custom-input-number .p-inputnumber-input {
+ width: 11rem;
+}
+
+:host ::ng-deep .p-dropdown-items-wrapper{
+    max-height: 160px;
+}
+
+.add-assignment-table{
+    min-width: 40rem;
+    margin: 2rem;
+}
+
+.add-assignment-table th, td{
+    text-align: center;
+}

@@ -1,0 +1,26 @@
+<a (click)="OnCourseClick()">
+  <p-card
+    [header]="course.name"
+    [style]="{ width: '430px' }"
+    [subheader]="course.author.firstName + ' ' + course.author.lastName"
+    [styleClass]="selected ? 'active' : ''"
+  >
+    <div class="chips-container">
+      <div class="chip-row">
+        <p-chip label="{{ course.degree }} "></p-chip>
+        <p-chip label="{{ course.year }} year"></p-chip>
+        <p-chip label="{{ course.semester }} semester"></p-chip>
+      </div>
+      <div class="chip-row">
+        <p-chip label="{{ course.shortDepartment }}"></p-chip>
+        <p-chip label="{{ course.major }}"></p-chip>
+      </div>
+    </div>
+  </p-card>
+  <span
+    *ngIf="!course.isActive"
+    tooltipPosition="left"
+    pTooltip="Inactive course"
+    class="active-indicator pi pi-ban"
+  ></span>
+</a>

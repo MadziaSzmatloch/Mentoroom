@@ -1,0 +1,30 @@
+.role{
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    padding: 4px 16px;
+    border-radius: 14px;
+}
+
+.student{
+    background-color: #89f989;
+}
+
+.guest{
+    background-color: #f9f989;
+}
+
+.admin{
+    background-color: #f98989;
+}
+
+.lecturer{
+    background-color: #8989f9;
+}
+
+.promote-to-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items:center;
+}

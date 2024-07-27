@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 32px;
+}
+
+.courses {
+    display: flex;
+    min-height: 100vh
+}
+
+.courses.side-panel{
+    height: 100%;
+}

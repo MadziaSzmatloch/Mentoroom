@@ -1,0 +1,23 @@
+<div class="course-list" *ngIf="courses.length > 0 && !isLoading">
+  <app-course-item
+    *ngFor="let courseEl of courses"
+    [course]="courseEl"
+    [id]="courseEl.id"
+  ></app-course-item>
+</div>
+
+<div *ngIf="isLoading" class="not-found-container">
+  <div class="container">
+    <div class="spinner">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="courses.length === 0 && !isLoading" class="not-found-container">
+  <div class="container">
+    <div>
+      <p>No courses found with the specified filters</p>
+    </div>
+  </div>
+</div>

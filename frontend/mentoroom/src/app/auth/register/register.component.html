@@ -1,0 +1,237 @@
+<div class="animated-svg-background">
+  <svg
+    width="100%"
+    height="100%"
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid slice"
+  >
+    <image
+      xlink:href="/assets/hero-background.svg"
+      width="100%"
+      height="100%"
+    />
+  </svg>
+  <div class="container">
+    <p-card header="Sign Up" class="ui-card-title">
+      <form
+        *ngIf="!isLoading"
+        [formGroup]="signupForm"
+        class="register-form"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="form-group">
+          <div class="form-control">
+            <label for="firstName">First Name</label>
+            <input
+              id="firstName"
+              formControlName="firstName"
+              pInputText
+              aria-describedby="firstName-help"
+              [style]="{ width: '100%' }"
+            />
+            <span
+              *ngIf="
+                !signupForm.get('firstName').valid &&
+                signupForm.get('firstName').touched
+              "
+            >
+              <small
+                id="firstName-help"
+                *ngIf="signupForm.get('email').errors['required']"
+                >First Name is required</small
+              >
+            </span>
+          </div>
+
+          <div class="form-control">
+            <label for="lastName">Last Name</label>
+            <input
+              id="lastName"
+              formControlName="lastName"
+              pInputText
+              aria-describedby="lastName-help"
+              [style]="{ width: '100%' }"
+            />
+            <span
+              *ngIf="
+                !signupForm.get('lastName').valid &&
+                signupForm.get('lastName').touched
+              "
+            >
+              <small
+                id="lastName-help"
+                *ngIf="signupForm.get('email').errors['required']"
+                >Last Name is required</small
+              >
+            </span>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            formControlName="email"
+            [style]="{ width: '100%' }"
+            class="form-input"
+            pInputText
+            aria-describedby="email-help"
+          />
+          <span
+            *ngIf="
+              !signupForm.get('email').valid && signupForm.get('email').touched
+            "
+          >
+            <small
+              id="email-help"
+              *ngIf="signupForm.get('email').errors['email']"
+              >Please enter a valid email</small
+            >
+            <small
+              id="email-help"
+              *ngIf="signupForm.get('email').errors['required']"
+              >Email is required</small
+            >
+          </span>
+        </div>
+
+        <div formGroupName="passwordGroup" aria-describedby="passwords-help">
+          <div class="form-group">
+            <div class="form-control">
+              <label for="password">Password</label>
+              <p-password
+                id="password"
+                aria-describedby="password-help"
+                formControlName="password"
+                [inputStyle]="{ width: '100%' }"
+                [style]="{ width: '100%' }"
+                [toggleMask]="true"
+                mediumRegex="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^a-zA-Z\d]).{6,}$"
+                strongRegex="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^a-zA-Z\d]).{10,}$"
+              >
+                <ng-template pTemplate="footer">
+                  <p-divider></p-divider>
+                  <p class="password-tips-header">Suggestions</p>
+                  <ul class="password-tips">
+                    <li>At least one lowercase</li>
+                    <li>At least one uppercase</li>
+                    <li>At least one numeric</li>
+                    <li>Minimum 8 characters</li>
+                  </ul>
+                </ng-template>
+              </p-password>
+              <span
+                *ngIf="
+                  !signupForm.get('passwordGroup.password').valid &&
+                  signupForm.get('passwordGroup.password').touched
+                "
+              >
+                <small
+                  id="password-help"
+                  *ngIf="
+                    signupForm.get('passwordGroup.password').errors['pattern']
+                  "
+                  >Password does not meet the requirements</small
+                >
+                <small
+                  id="password-help"
+                  *ngIf="
+                    signupForm.get('passwordGroup.password').errors['required']
+                  "
+                  >Password is required</small
+                >
+              </span>
+            </div>
+
+            <div class="form-control">
+              <label for="passwordConfirm">Confirm Password</label>
+              <p-password
+                aria-describedby="passwordConfirm-help"
+                id="passwordConfirm"
+                formControlName="passwordConfirm"
+                [inputStyle]="{ width: '100%' }"
+                [style]="{ width: '100%' }"
+                [toggleMask]="true"
+                mediumRegex="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^a-zA-Z\d]).{6,}$"
+                strongRegex="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^a-zA-Z\d]).{10,}$"
+              >
+                <ng-template pTemplate="footer">
+                  <p-divider></p-divider>
+                  <p class="password-tips-header">Suggestions</p>
+                  <ul class="password-tips">
+                    <li>At least one lowercase</li>
+                    <li>At least one uppercase</li>
+                    <li>At least one numeric</li>
+                    <li>Minimum 8 characters</li>
+                  </ul>
+                </ng-template>
+              </p-password>
+              <span
+                *ngIf="
+                  !signupForm.get('passwordGroup.passwordConfirm').valid &&
+                  signupForm.get('passwordGroup.passwordConfirm').touched
+                "
+              >
+                <small
+                  id="passwordConfirm-help"
+                  *ngIf="
+                    signupForm.get('passwordGroup.passwordConfirm').errors[
+                      'pattern'
+                    ]
+                  "
+                  >Confirm password does not meet the requirements</small
+                >
+                <small
+                  id="password-help"
+                  *ngIf="
+                    signupForm.get('passwordGroup.passwordConfirm').errors[
+                      'required'
+                    ]
+                  "
+                  >Confirm password is required</small
+                >
+              </span>
+            </div>
+          </div>
+          <span
+            *ngIf="
+              !signupForm.get('passwordGroup').valid &&
+              signupForm.get('passwordGroup').touched
+            "
+          >
+            <small
+              id="passwords-help"
+              *ngIf="signupForm.get('passwordGroup').errors['mismatch']"
+              >Passwords not match each other</small
+            ></span
+          >
+        </div>
+
+        <span *ngIf="errorMessage">
+          <small>{{ errorMessage }}</small>
+        </span>
+
+        <button [disabled]="!signupForm.valid" class="btn-cta" type="submit">
+          Register
+        </button>
+        <p>Have an Account? <a routerLink="/sign-in">Sign in here</a></p>
+      </form>
+      <div
+        [style]="{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '500px',
+          height: '294px',
+          paddingBottom: '50px',
+        }"
+        *ngIf="isLoading"
+      >
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+    </p-card>
+
+    <img src="../../../assets/register-image.svg" />
+  </div>
+</div>

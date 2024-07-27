@@ -1,0 +1,126 @@
+<div>
+  <div class="add-new-assignment-container" *ngIf="!isLoading">
+    <form [formGroup]="form" class="add-assignment-form">
+      <div class="form-line-1">
+        <div class="name-input">
+          <p-floatLabel>
+            <input
+              type="text"
+              id="name"
+              pInputText
+              formControlName="name"
+              [style]="{ width: '15rem' }"
+            />
+            <label for="name">Name</label>
+          </p-floatLabel>
+        </div>
+
+        <p-calendar
+          formControlName="deadLineDate"
+          [iconDisplay]="'input'"
+          [showIcon]="true"
+          inputId="icondisplay"
+          [style]="{ width: '15rem' }"
+        />
+
+        <div class="checkbox-div">
+          <p-checkbox
+            formControlName="isActive"
+            [binary]="true"
+            label="Is Active"
+            name="isActive"
+          />
+        </div>
+      </div>
+
+      <p-floatLabel>
+        <textarea
+          rows="5"
+          type="text"
+          id="description"
+          pInputText
+          formControlName="description"
+          pInputTextarea
+          [style]="{ width: '37rem' }"
+        ></textarea>
+        <label for="description">Description</label>
+      </p-floatLabel>
+    </form>
+
+    <p-divider [style]="{ width: '37rem', margin: '2rem' }" />
+
+    <form [formGroup]="requiredFilesForm">
+      <div class="add-assignment-required-files">
+        <p-floatLabel>
+          <input
+            type="text"
+            id="name"
+            pInputText
+            formControlName="fileNameSuffix"
+            [style]="{ width: '12rem' }"
+          />
+          <label for="fileNameSuffix">File Name Suffix</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+          <p-inputNumber
+            [showButtons]="true"
+            inputId="stacked"
+            formControlName="maxSizeInKb"
+            mode="decimal"
+            suffix="kB"
+            class="custom-input-number"
+          />
+          <label for="number-input">Max size in kB</label>
+        </p-floatLabel>
+
+        <p-dropdown
+          appendTo="body"
+          [options]="extensions"
+          formControlName="extension"
+          placeholder="Extension"
+          [style]="{ width: '10rem' }"
+        />
+
+        <p-button (click)="OnAddFile()" icon="pi pi-plus" />
+      </div>
+    </form>
+
+    <p-table [value]="files" class="add-assignment-table">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>File name suffix</th>
+          <th>Extension</th>
+          <th>Max size in kB</th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-file>
+        <tr>
+          <td>{{ file.fileNameSuffix }}</td>
+          <td>{{ file.extension }}</td>
+          <td>{{ file.maxSizeInKb }}</td>
+          <td>
+            <p-button
+              (click)="deleteFile(file)"
+              icon="pi pi-trash"
+              severity="danger"
+            />
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+    <div class="save-assignment-button">
+      <p-button
+        (onClick)="onCreate()"
+        label="Save"
+        icon="pi pi-save"
+        iconPos="right"
+      />
+    </div>
+  </div>
+  <div class="add-new-assignment-container" *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</div>

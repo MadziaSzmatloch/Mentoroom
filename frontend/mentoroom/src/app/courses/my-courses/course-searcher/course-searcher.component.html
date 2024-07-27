@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="search-bar">
+    <span class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input
+        [(ngModel)]="filter.name"
+        (input)="OnFiltersChanged()"
+        type="text"
+        pInputText
+        class="p-inputtext-sm"
+      />
+    </span>
+
+    <p-dropdown
+      (onChange)="OnFiltersChanged()"
+      class="p-inputtext-sm"
+      [options]="departments"
+      [(ngModel)]="filter.selectedDepartment"
+      [showClear]="true"
+      placeholder="Departament"
+      optionLabel="name"
+    ></p-dropdown>
+
+    <p-dropdown
+      (onChange)="OnFiltersChanged()"
+      class="p-inputtext-sm"
+      [options]="studyPrograms"
+      [(ngModel)]="filter.selectedStudyProgram"
+      [showClear]="true"
+      placeholder="Study program"
+      optionLabel="name"
+    ></p-dropdown>
+
+    <p-dropdown
+      (onChange)="OnFiltersChanged()"
+      class="p-inputtext-sm"
+      [options]="degrees"
+      [(ngModel)]="filter.selectedDegree"
+      [showClear]="true"
+      placeholder="Degree"
+      optionLabel="name"
+      optionValue="name"
+    ></p-dropdown>
+
+    <p-dropdown
+      (onChange)="OnFiltersChanged()"
+      class="p-inputtext-sm"
+      [options]="years"
+      [(ngModel)]="filter.selectedYear"
+      [showClear]="true"
+      placeholder="Year"
+    ></p-dropdown>
+
+    <p-dropdown
+      (onChange)="OnFiltersChanged()"
+      class="p-inputtext-sm"
+      [options]="semesters"
+      [(ngModel)]="filter.selectedSemester"
+      [showClear]="true"
+      placeholder="Semester"
+    ></p-dropdown>
+
+    <p-checkbox
+      (onChange)="OnFiltersChanged()"
+      [(ngModel)]="filter.showInactive"
+      [binary]="true"
+      inputId="binary"
+      label="Show inactive"
+    ></p-checkbox>
+  </div>
+  <div class="buttons">
+    <p-button
+      *ngIf="userRole === 'Lecturer'"
+      (onClick)="OnShowModal()"
+      [style]="{ width: '100%' }"
+      label="Add new"
+      size="small"
+    ></p-button>
+  </div>
+</div>

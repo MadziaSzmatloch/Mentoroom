@@ -1,0 +1,19 @@
+.active-status{
+    padding: 6px;
+    border-radius: 50px;
+    font-size: 0.75rem
+}
+
+.activated{
+    background-color: #89f989;
+}
+
+.inactivated{
+    background-color: #f98989;
+}
+
+.student-button{
+    margin-right: 10px;
+    position: relative;
+    left: -32px;
+}

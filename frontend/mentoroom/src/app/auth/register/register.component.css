@@ -1,0 +1,97 @@
+.animated-svg-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .animated-svg-background svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+  }
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 220px);
+}
+
+.container > *:not(:first-child) {
+    margin-left: 192px; 
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 500px;
+}
+
+.register-form p {
+    margin-top: -6px;
+    font-size: 12px;
+}
+
+.ui-card-title {
+    text-align: center;
+}
+
+.form-control{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0px 4px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: row;
+}
+
+.form-control label{
+    font-size: 12px;
+}
+
+.btn-cta{
+    font-size: 16px;
+    margin: 0px 4px;
+    border: none;
+    padding: 16px 0;
+    border-radius: 8px;
+    background-color: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.btn-cta:disabled {
+    cursor: not-allowed;
+}
+
+.btn-cta:not(:disabled):hover{
+    transform: translate(0px, -2px);
+}
+
+.password-tips-header{
+    font-size: 14px;
+    text-align: start;
+}
+
+.password-tips{
+    font-size: 12px;
+    margin-top: 0px;
+}
+
+.password-tips li{
+    text-align: start;
+}
+
+a{
+    color: #00bfa6;
+}

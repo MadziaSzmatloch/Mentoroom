@@ -1,0 +1,126 @@
+.animated-svg-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .animated-svg-background svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+  }
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 220px);
+    gap: 16px;
+}
+
+.card-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-container h1{
+  font-size: 2rem;
+  margin: 0;
+  color: var(--text)
+}
+
+.card-container p{
+  margin: 0;
+  font-weight: 500;
+}
+
+.roles-container {
+    display: flex;
+    gap: 32px;
+}
+
+.role-container{
+  display: flex;
+  gap: 32px;
+}
+
+.role{
+  cursor: pointer;
+  border-radius: 4px;
+  width: 300px;
+  height: 300px;
+  border: 2px solid #f5f5f5;
+  flex-direction: column;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.selected{
+  border-color: var(--accent);
+}
+
+.role h2{
+  margin: 0 0 5px 0;
+}
+
+.role img{
+  width: 232px;
+  height: 232px;
+}
+
+.custom-otp-input {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  appearance: none;
+  text-align: center;
+  transition: all 0.2s;
+  border-radius: 0;
+  border: 1px solid var(--surface-400);
+  background: transparent;
+  outline-offset: -2px;
+  outline-color: transparent;
+  border-right: 0 none;
+  transition: outline-color 0.3s;
+  color: var(--text-color);
+}
+
+.custom-otp-input:focus {
+  outline: 2px solid var(--primary-color);
+}
+
+.custom-otp-input:first-child,
+.custom-otp-input:nth-child(5),
+.custom-otp-input:nth-child(9) {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.custom-otp-input:nth-child(3),
+.custom-otp-input:nth-child(7),
+.custom-otp-input:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-right: 1px solid var(--surface-400);
+}
+
+.modal-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal-wrapper p {
+  font-weight: 300;
+}

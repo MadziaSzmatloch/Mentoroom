@@ -1,0 +1,40 @@
+<div class="animated-svg-background">
+  <svg
+    width="100%"
+    height="100%"
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid slice"
+  >
+    <image
+      xlink:href="/assets/hero-background.svg"
+      width="100%"
+      height="100%"
+    />
+  </svg>
+  <div class="content">
+    <div class="hero-heading">
+      <img class="img-left" src="../../assets/hero-student.svg" />
+      <div class="headings">
+        <h1>Mentoroom</h1>
+        <h2>
+          Your space to
+          <span class="inner-headings">
+            teaching <br />
+            learning <br />
+          </span>
+        </h2>
+      </div>
+      <div class="auth-buttons" *ngIf="!isAuthenticated">
+        <a routerLink="/sign-up" class="btn">Register</a>
+        <a routerLink="/sign-in" class="btn cta">Login</a>
+      </div>
+      <div
+        class="auth-buttons"
+        *ngIf="isAuthenticated"
+        style="height: 80px"
+      ></div>
+      <img class="img-right" src="../../assets/hero-professor.svg" />
+    </div>
+  </div>
+</div>

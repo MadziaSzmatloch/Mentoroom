@@ -1,0 +1,71 @@
+header {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 28px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  gap: 32px;
+}
+
+ul li {
+  color: var(--text);
+  font-size: 18px;
+  position: relative;
+}
+
+header a:link,
+header a:active,
+header a:visited {
+  text-decoration: none;
+  color: var(--text);
+}
+
+.btn-cta {
+  color: var(--text);
+}
+
+ul li::after {
+  content: '';
+  width: 0%;
+  height: 3px;
+  background-color: var(--accent);
+  position: absolute;
+  left: 0;
+  top: 25px;
+
+  transition: width 0.3s ease;
+}
+
+ul li:hover::after {
+  width: 100%;
+}
+
+ul li.active::after {
+  width: 100%;
+}

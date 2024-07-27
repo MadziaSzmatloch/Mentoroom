@@ -1,0 +1,212 @@
+<form [formGroup]="addCourseForm" *ngIf="!isAdded">
+  <p-stepper>
+    <p-stepperPanel header="Part I">
+      <ng-template
+        pTemplate="content"
+        let-nextCallback="nextCallback"
+        let-index="index"
+      >
+        <div class="container">
+          <div class="form-group" formGroupName="step1">
+            <div class="form-control" appendTo="body">
+              <label for="degree">Degree</label>
+              <p-dropdown
+                (onChange)="onDegreeSelected($event)"
+                formControlName="degreeId"
+                optionValue="id"
+                id="degree"
+                [style]="{ width: '420px' }"
+                appendTo="body"
+                class="p-inputtext-sm"
+                [options]="degrees"
+                [showClear]="true"
+                optionLabel="name"
+                placeholder="Degree"
+              ></p-dropdown>
+            </div>
+            <div class="form-control">
+              <label for="name">Name</label>
+              <input
+                formControlName="name"
+                [style]="{ width: '100%' }"
+                class="form-input"
+                id="name"
+                pInputText
+              />
+            </div>
+            <div class="form-control">
+              <label for="description">Description</label>
+              <textarea
+                formControlName="description"
+                [style]="{ minHeight: '100px' }"
+                rows="5"
+                class="form-input"
+                id="description"
+                cols="30"
+                pInputTextarea
+                [autoResize]="true"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="one-child">
+          <p-button
+            label="Next"
+            [disabled]="!addCourseForm.get('step1').valid"
+            icon="pi pi-arrow-right"
+            iconPos="right"
+            (onClick)="nextCallback.emit()"
+          /></div
+      ></ng-template>
+    </p-stepperPanel>
+
+    <p-stepperPanel header="Part II">
+      <ng-template
+        pTemplate="content"
+        let-prevCallback="prevCallback"
+        let-nextCallback="nextCallback"
+        let-index="index"
+      >
+        <div class="container" appendTo="body">
+          <div class="container side-by-side" formGroupName="step2">
+            <div class="form-group">
+              <div class="form-control" appendTo="body">
+                <label for="departament">Departament</label>
+                <p-dropdown
+                  (onChange)="onDepartamentSelected($event)"
+                  [style]="{ width: '200px' }"
+                  appendTo="body"
+                  class="p-inputtext-sm"
+                  [options]="departments"
+                  [showClear]="true"
+                  formControlName="departmentId"
+                  optionValue="id"
+                  placeholder="Departament"
+                  optionLabel="name"
+                ></p-dropdown>
+              </div>
+
+              <div class="form-control" appendTo="body">
+                <label for="studyProgram">Study program</label>
+                <p-dropdown
+                  [style]="{ width: '200px' }"
+                  appendTo="body"
+                  class="p-inputtext-sm"
+                  [options]="filteredStudyPrograms"
+                  [showClear]="true"
+                  placeholder="Study program"
+                  formControlName="studyProgramId"
+                  optionValue="id"
+                  optionLabel="name"
+                ></p-dropdown>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-control" appendTo="body">
+                <label for="year">Year</label>
+                <p-dropdown
+                  (onChange)="onYearSelected($event)"
+                  [style]="{ width: '200px' }"
+                  appendTo="body"
+                  class="p-inputtext-sm"
+                  [options]="filteredYears"
+                  [showClear]="true"
+                  placeholder="Year"
+                  formControlName="yearId"
+                  optionValue="id"
+                  optionLabel="name"
+                ></p-dropdown>
+              </div>
+              <div class="form-control" appendTo="body">
+                <label for="semester">Semester</label>
+                <p-dropdown
+                  [style]="{ width: '200px' }"
+                  appendTo="body"
+                  class="p-inputtext-sm"
+                  [options]="filteredSemesters"
+                  [showClear]="true"
+                  placeholder="Semester"
+                  optionLabel="name"
+                  formControlName="semesterId"
+                  optionValue="id"
+                ></p-dropdown>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="two-child">
+          <p-button
+            label="Back"
+            icon="pi pi-arrow-left"
+            (onClick)="prevCallback.emit()"
+          />
+          <p-button
+            label="Next"
+            [disabled]="!addCourseForm.get('step2').valid"
+            icon="pi pi-arrow-right"
+            iconPos="right"
+            (onClick)="nextCallback.emit()"
+          /></div
+      ></ng-template>
+    </p-stepperPanel>
+
+    <p-stepperPanel header="Part III">
+      <ng-template
+        pTemplate="content"
+        let-prevCallback="prevCallback"
+        let-index="index"
+      >
+        <div *ngIf="!isLoading">
+          <p class="error-message" *ngIf="errorOccured">
+            {{ errorMessage }}
+          </p>
+          <p>
+            You can add co-authors who can help you with the course, but it is
+            not required.
+          </p>
+          <div class="container">
+            <div class="form-group" formGroupName="step3">
+              <div class="form-control">
+                <label for="email">Select CoAuthors</label>
+                <p-multiSelect
+                  [style]="{ maxWidth: '350px' }"
+                  [options]="lecturers"
+                  appendTo="body"
+                  formControlName="coAuthors"
+                  optionLabel="email"
+                  optionValue="id"
+                  placeholder="Select CoAuthors"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="two-child">
+            <p-button
+              label="Back"
+              icon="pi pi-arrow-left"
+              (onClick)="prevCallback.emit()"
+            />
+            <p-button
+              label="Submit"
+              iconPos="right"
+              icon="pi pi-arrow-right"
+              (onClick)="onCreateNewCourse()"
+            />
+          </div>
+        </div>
+        <div *ngIf="isLoading" class="spinner">
+          <app-loading-spinner></app-loading-spinner></div
+      ></ng-template>
+    </p-stepperPanel>
+  </p-stepper>
+</form>
+<div *ngIf="isAdded" class="course-added">
+  <p>
+    The course has been created, go to the list of your courses to edit it and
+    add new assignments
+  </p>
+  <p-button routerLink="/course-editor/{{ addedCourseId }}"
+    >Go to My Courses</p-button
+  >
+</div>

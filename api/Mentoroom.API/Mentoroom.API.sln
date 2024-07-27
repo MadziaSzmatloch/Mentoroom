@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34601.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mentoroom.API", "Mentoroom.API\Mentoroom.API.csproj", "{63643607-FED9-4D15-BA65-E0BDBE498493}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mentoroom.DOMAIN", "Mentoroom.DOMAIN\Mentoroom.DOMAIN.csproj", "{FF5EF598-35DF-4291-8E5B-4D682FD25030}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mentoroom.INFRASTRACTURE", "Montoroom.INFRASTRACTURE\Mentoroom.INFRASTRACTURE.csproj", "{2F224545-A3C8-49C9-AE47-A34921F5FE60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mentoroom.APPLICATION", "Mentoroom.APPLICATION\Mentoroom.APPLICATION.csproj", "{F30272F8-2A24-4BCF-B1E9-93D2356CE318}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63643607-FED9-4D15-BA65-E0BDBE498493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63643607-FED9-4D15-BA65-E0BDBE498493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63643607-FED9-4D15-BA65-E0BDBE498493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63643607-FED9-4D15-BA65-E0BDBE498493}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF5EF598-35DF-4291-8E5B-4D682FD25030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF5EF598-35DF-4291-8E5B-4D682FD25030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF5EF598-35DF-4291-8E5B-4D682FD25030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF5EF598-35DF-4291-8E5B-4D682FD25030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F224545-A3C8-49C9-AE47-A34921F5FE60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F224545-A3C8-49C9-AE47-A34921F5FE60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F224545-A3C8-49C9-AE47-A34921F5FE60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F224545-A3C8-49C9-AE47-A34921F5FE60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F30272F8-2A24-4BCF-B1E9-93D2356CE318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F30272F8-2A24-4BCF-B1E9-93D2356CE318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F30272F8-2A24-4BCF-B1E9-93D2356CE318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F30272F8-2A24-4BCF-B1E9-93D2356CE318}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61751D28-E0C0-481E-84C2-FE33B1CCF565}
+	EndGlobalSection
+EndGlobal

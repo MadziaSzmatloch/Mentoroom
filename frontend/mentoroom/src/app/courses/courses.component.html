@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="search-bar">
+    <span class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input
+        [(ngModel)]="filter.name"
+        (input)="OnFiltersChanged()"
+        type="text"
+        pInputText
+        class="p-inputtext-sm"
+      />
+    </span>
+
+    <p-dropdown
+      (onChange)="OnFiltersChanged()"
+      class="p-inputtext-sm"
+      [options]="departments"
+      [(ngModel)]="filter.selectedDepartment"
+      [showClear]="true"
+      placeholder="Departament"
+      optionLabel="name"
+      optionValue="name"
+    ></p-dropdown>
+
+    <p-dropdown
+      (onChange)="OnFiltersChanged()"
+      class="p-inputtext-sm"
+      [options]="studyPrograms"
+      [(ngModel)]="filter.selectedStudyProgram"
+      [showClear]="true"
+      placeholder="Study program"
+      optionLabel="name"
+      optionValue="name"
+    ></p-dropdown>
+
+    <p-dropdown
+      (onChange)="OnFiltersChanged()"
+      class="p-inputtext-sm"
+      [options]="degrees"
+      [(ngModel)]="filter.selectedDegree"
+      [showClear]="true"
+      placeholder="Degree"
+      optionLabel="name"
+      optionValue="name"
+    ></p-dropdown>
+
+    <p-dropdown
+      (onChange)="OnFiltersChanged()"
+      class="p-inputtext-sm"
+      [options]="years"
+      [(ngModel)]="filter.selectedYear"
+      [showClear]="true"
+      placeholder="Year"
+    ></p-dropdown>
+
+    <p-dropdown
+      (onChange)="OnFiltersChanged()"
+      class="p-inputtext-sm"
+      [options]="semesters"
+      [(ngModel)]="filter.selectedSemester"
+      [showClear]="true"
+      placeholder="Semester"
+    ></p-dropdown>
+
+    <p-checkbox
+      (onChange)="OnFiltersChanged()"
+      [(ngModel)]="filter.showInactive"
+      [binary]="true"
+      inputId="binary"
+      label="Show inactive"
+    ></p-checkbox>
+  </div>
+
+  <p-divider></p-divider>
+
+  <div class="courses" *ngIf="filtredCourses">
+    <div
+      *ngFor="let course of filtredCourses"
+      style="position: relative"
+      (click)="onJoinCourse(course)"
+    >
+      <a>
+        <p-card
+          [header]="course.name"
+          [style]="{ width: '430px' }"
+          [subheader]="course.author.firstName + ' ' + course.author.lastName"
+          [styleClass]="selected ? 'active' : ''"
+        >
+          <div class="chips-container">
+            <div class="chip-row">
+              <p-chip label="{{ course.degree }} "></p-chip>
+              <p-chip label="{{ course.year }} year"></p-chip>
+              <p-chip label="{{ course.semester }} semester"></p-chip>
+            </div>
+            <div class="chip-row">
+              <p-chip label="{{ course.shortDepartment }}"></p-chip>
+              <p-chip label="{{ course.major }}"></p-chip>
+            </div>
+          </div>
+        </p-card>
+      </a>
+      <span
+        *ngIf="!course.isActive"
+        tooltipPosition="left"
+        pTooltip="Inactive course"
+        class="active-indicator pi pi-ban"
+      ></span>
+    </div>
+  </div>
+
+  <p-dialog
+    *ngIf="selectedCourse"
+    header="Do you want to join {{ selectedCourse.name }}?"
+    [draggable]="false"
+    [resizable]="false"
+    [(visible)]="modalVisibility"
+    [modal]="true"
+    [style]="{ width: '25rem' }"
+  >
+    <div class="join-buttons">
+      <p-button (click)="cancel()" severity="secondary" label="No"></p-button>
+      <p-button (click)="join()" label="Yes"></p-button>
+    </div>
+  </p-dialog>
+</div>

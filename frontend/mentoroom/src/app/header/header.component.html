@@ -1,0 +1,42 @@
+<header>
+  <div class="logo"><a routerLink="/">Mentoroom</a></div>
+  <nav>
+    <ul>
+      <li *ngIf="userRole === 'Admin'" routerLinkActive="active">
+        <a routerLink="/admin-dashboard">Admin Dashboard</a>
+      </li>
+      <li
+        routerLinkActive="active"
+        *ngIf="userRole !== 'Lecturer' && userRole !== 'Admin'"
+      >
+        <a routerLink="/courses">Courses</a>
+      </li>
+      <li
+        routerLinkActive="active"
+        *ngIf="isAuthenticated && userRole !== 'Admin'"
+      >
+        <a routerLink="/my-courses">My Courses</a>
+      </li>
+    </ul>
+
+    <div *ngIf="isAuthenticated">
+      <button
+        pButton
+        type="button"
+        icon="pi pi-sign-out"
+        (click)="onLogout()"
+        label="Hi {{ firstName }}!"
+        iconPos="right"
+      ></button>
+    </div>
+    <div *ngIf="!isAuthenticated">
+      <button
+        pButton
+        type="button"
+        routerLink="/sign-in"
+        icon="pi pi-sign-in"
+        label="Sign in"
+      ></button>
+    </div>
+  </nav>
+</header>

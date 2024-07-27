@@ -1,0 +1,19 @@
+<div class="container">
+  <app-course-searcher (showModal)="OnShowModal($event)"></app-course-searcher>
+  <p-divider></p-divider>
+  <div class="courses">
+    <app-course-list></app-course-list>
+    <div class="side-panel">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <p-dialog
+    header="New Course"
+    [draggable]="false"
+    [modal]="true"
+    [(visible)]="modalVisibility"
+    [style]="{ width: '30vw' }"
+  >
+    <app-add-course></app-add-course>
+  </p-dialog>
+</div>

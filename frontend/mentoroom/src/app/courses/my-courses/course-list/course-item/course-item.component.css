@@ -1,0 +1,62 @@
+.chips-container{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.chip-row{
+    gap: 4px;
+    display: flex;
+    flex-direction: row;
+}
+
+a{
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.active-indicator{
+  margin: 15px 15px;
+  top: 0;
+  right: 0;
+  position: absolute;
+  color: var(--invalid);
+}
+
+a:link,
+a:active,
+a:visited {
+  text-decoration: none;
+}
+
+.p-element .p-card{
+  border: 1px solid transparent;
+}
+
+.p-element .p-card:hover{
+  border: 1px solid var(--accent);
+  box-shadow: 0 2px 1px -1px rgba(0, 191, 166, 0.2), 0 1px 1px 0 rgba(0, 191, 166, 0.14), 0 1px 3px 0 rgba(0, 191, 166, 0.12);
+}
+
+.p-element .active{
+  box-shadow: 0 2px 1px -1px rgba(0, 191, 166, 0.2), 0 1px 1px 0 rgba(0, 191, 166, 0.14), 0 1px 3px 0 rgba(0, 191, 166, 0.12);
+  border: 1px solid var(--accent);
+  position: relative;
+}
+
+.p-element .active::before{
+  content: "\2713";
+  position: absolute;
+  top: -5px;
+  left: -10px;
+    color: var(--white);;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  background-color: var(--accent);
+  border-radius: 50%;
+}

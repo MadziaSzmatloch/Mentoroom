@@ -1,0 +1,158 @@
+<div [style]="{ height: 'calc(100vh - 210px)' }">
+  <p-dialog
+    (onHide)="hidePromoteModal()"
+    header="Select role to promote"
+    [(visible)]="visible"
+    [modal]="true"
+    [style]="{ width: '18vw' }"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <div class="promote-to-container">
+      <span style="width: 100%">
+        <p-dropdown
+          auto
+          [style]="{ width: '100%' }"
+          appendTo="body"
+          [options]="roles"
+          [(ngModel)]="selectedRole"
+          optionLabel="label"
+          placeholder="Select role"
+        ></p-dropdown>
+      </span>
+      <span
+        style="width: 100%"
+        *ngIf="selectedRole && selectedRole.value === 'Student'"
+        ><span class="p-input-icon-left" style="width: 100%">
+          <i class="pi pi-user"></i>
+          <input
+            placeholder="Enter student index number"
+            [style]="{ width: '100%' }"
+            [inputStyle]="{ width: '100%' }"
+            type="text"
+            pInputText
+            [(ngModel)]="studentIndex"
+          />
+        </span>
+      </span>
+      <small *ngIf="errorMessage" style="color: var(--invalid)">{{
+        errorMessage
+      }}</small>
+      <span style="width: 100%">
+        <p-button
+          [disabled]="
+            selectedRole === undefined ||
+            (selectedRole.value === 'Student' && !studentIndex)
+          "
+          [style]="{ width: '100%' }"
+          (onClick)="promoteTo()"
+          label="Submit"
+        ></p-button
+      ></span>
+    </div>
+  </p-dialog>
+  <p-table
+    *ngIf="!isLoading"
+    [value]="users"
+    [paginator]="true"
+    [rows]="9"
+    [first]="first"
+    [tableStyle]="{ minWidth: '50rem', height: 'calc(100vh - 210px)' }"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    (onPage)="pageChange($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 20%">Id</th>
+        <th style="width: 15%">First name</th>
+        <th style="width: 15%">Last name</th>
+        <th style="width: 20%">Email</th>
+        <th style="width: 15%">Role</th>
+        <th style="width: 5%"></th>
+      </tr>
+      <tr>
+        <th>
+          <p-columnFilter type="text" field="id"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="firstName"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="lastName"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="email"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter field="role" matchMode="equals" [showMenu]="false">
+            <ng-template
+              pTemplate="filter"
+              let-value
+              let-filter="filterCallback"
+            >
+              <p-dropdown
+                [ngModel]="value"
+                [options]="roles"
+                (onChange)="filter($event.value)"
+                placeholder="Any"
+                [showClear]="true"
+                appendTo="body"
+              >
+              </p-dropdown>
+            </ng-template>
+          </p-columnFilter>
+        </th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td style="width: 100px">
+          <span
+            class="role"
+            [ngClass]="{
+              student: user.role === 'Student',
+              admin: user.role === 'Admin',
+              lecturer: user.role === 'Lecturer',
+              guest: user.role === null
+            }"
+            >{{ user.role || "Guest" }}</span
+          >
+        </td>
+        <td>
+          <p-menu
+            #menu
+            [model]="userMenuItems"
+            appendTo="body"
+            [popup]="true"
+          ></p-menu>
+          <button
+            pButton
+            type="button"
+            (click)="selectedUser = user; menu.toggle($event)"
+            class="p-button-secondary"
+            icon="pi pi-cog"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <div
+    [style]="{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingBottom: '60px',
+      height: '100%'
+    }"
+    *ngIf="isLoading"
+  >
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</div>

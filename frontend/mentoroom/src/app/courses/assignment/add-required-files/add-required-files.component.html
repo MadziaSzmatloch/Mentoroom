@@ -1,0 +1,59 @@
+<div>
+  <form [formGroup]="requiredFilesForm">
+    <div class="add-assignment-required-files">
+      <p-floatLabel>
+        <input
+          type="text"
+          id="name"
+          pInputText
+          formControlName="fileNameSuffix"
+          [style]="{ width: '12rem' }"
+        />
+        <label for="fileNameSuffix">File Name Suffix</label>
+      </p-floatLabel>
+
+      <p-floatLabel>
+        <p-inputNumber
+          [showButtons]="true"
+          inputId="stacked"
+          formControlName="maxSizeInKb"
+          mode="decimal"
+          suffix="kB"
+          class="custom-input-number"
+        />
+        <label for="number-input">Max size in kB</label>
+      </p-floatLabel>
+
+      <p-dropdown
+        appendTo="body"
+        [options]="extensions"
+        formControlName="extension"
+        placeholder="Extension"
+        [style]="{ width: '10rem' }"
+      />
+
+      <p-button
+        (click)="OnAddFile()"
+        [disabled]="requiredFilesForm.invalid"
+        icon="pi pi-plus"
+      />
+    </div>
+  </form>
+
+  <p-table [value]="files" class="add-assignment-table">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>File name suffix</th>
+        <th>Extension</th>
+        <th>Max size in kB</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-file>
+      <tr>
+        <td>{{ file.fileNameSuffix }}</td>
+        <td>{{ file.extension }}</td>
+        <td>{{ file.maxSizeInKb }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

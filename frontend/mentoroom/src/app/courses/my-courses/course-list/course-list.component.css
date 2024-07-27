@@ -1,0 +1,32 @@
+.course-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0 12px;
+    padding: 10px;
+
+    height: calc(100vh - 153px);
+    overflow-y: auto; 
+    align-content: flex-start; 
+    min-width: 47vw;
+}
+
+.not-found-container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found-container p{
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+}

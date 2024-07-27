@@ -1,0 +1,327 @@
+.container{
+    display: flex;
+    width: 49vw;
+    height: 100%;
+    padding: 8px 16px;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    margin-right: -32px;
+
+    
+    height: calc(100vh - 153px);
+    overflow-y: auto; 
+    overflow-x: hidden; 
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+}
+
+.course-header{
+    padding: 12px 32px;
+    width: 100%;
+    margin: 0px 64px;
+    color: var(--text);
+}
+.course-header h1{
+    margin-bottom: 0px;
+}
+
+.course-header p{
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 200;
+    margin-top: 8px;
+}
+
+.first-line {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.first-line h1, .first-line p {
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.right-button {
+    margin-left: auto;
+}
+
+.assignment-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 8px;
+}
+
+.description-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.description{
+    align-self: flex-start;
+}
+
+.assignment-buttons{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    gap: 4px;
+    align-items: flex-end;
+}
+.resource-btns{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    align-self: end;
+    gap: 12px;
+    margin-top: 4px;
+}
+.resource{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+}
+
+edit-assignment-button{
+    margin-right: 0px;
+    align-self: flex-end;
+}
+
+.resource-button{
+    display: flex;
+}
+
+.spinner{
+    text-align: center;
+}
+
+.download-btn-icon{
+color: white;
+margin-left: 10px;
+}
+
+.download-assignment-btn{
+    align-self: flex-end;
+    margin-bottom: 4px;
+}
+
+/*Edit Assignment Pop up*/
+.edit-assignment-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.edit-assignment-row-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.name-input{
+    width:max-content;
+}
+
+.checkbox-div{
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+}
+
+.edit-assignment-buttons-container{
+    display: flex;
+    gap: 2rem;
+}
+.save-assignment-button{
+    align-self: flex-end;
+}
+
+.wrapper{
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.edit-course-btn{
+    position: relative;
+    top: -30px;
+    right: 30px;
+}
+
+/*Edit Resources*/
+.resources-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+
+}
+.buttons-container{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+/*File chooser*/
+.file-upload-container{
+    margin-top: 10px;
+}
+
+:host ::ng-deep .p-fileupload .p-fileupload-buttonbar { 
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+:host ::ng-deep .p-fileupload .p-fileupload-content { 
+    padding: 0.5rem;
+    text-align: center
+}
+
+
+
+/*Required files*/
+.required-files-text{
+    font-size: 18px;
+}
+.add-new-required-file-btn{
+    position: relative;
+    left: 130px;
+    top: -50px;
+}
+.required-files-sector{
+ position: relative;
+ top: -2rem;
+}
+
+.required-files-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.delete-required-file-btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: #f87171;
+    border: 1px solid #f87171;
+    position: relative;
+    top: 1.7rem;
+    left: 13.4rem;
+}
+
+.required-file-tile{
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #0000001a;
+    border-radius: 6px;
+    width: 14rem;
+    height: 8rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    margin: 0.5rem
+    
+}
+
+
+/*Required files student*/
+
+.sended-required-file-tile{
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #0000001a;
+    border-radius: 6px;
+    width: 18rem;
+    height: 12rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    margin: 0.5rem
+}
+
+.sended-file-text{
+    font-weight: bold;
+    font-size: 20px;
+}
+.sended-file-btn-container{
+    display: flex;
+    gap: 1rem;
+}
+
+.sended-file-btn{
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.sended-required-file-tile p{
+margin: 5px !important;
+}
+.sended-icon{
+    position: relative;
+    top: 2.5rem;
+    left: 16.5rem;
+    font-size: 19px;
+}
+.required-file-tile p{
+    margin: 3px;
+}
+
+.required-file-tile.student-required-files {
+    width: 30rem;
+    height: 15rem;
+    padding-top: 2rem;
+  }
+
+  .student-required-files-sector{
+    margin-top: 2rem;
+  }
+  
+  :host ::ng-deep .student-required-files .p-fileupload{
+    width: 30rem !important;
+}
+
+  :host ::ng-deep .student-required-files .p-fileupload-buttonbar {
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    border-top: none;
+}
+
+:host ::ng-deep .student-required-files .p-fileupload-content {
+    border-bottom: none;
+}
+
+.not-sended-icon{
+    position: relative;
+    top: 2.5rem;
+    left: 28.5rem;
+    font-size: 21px;
+}

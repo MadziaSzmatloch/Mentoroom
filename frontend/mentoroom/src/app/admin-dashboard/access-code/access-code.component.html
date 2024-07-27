@@ -1,0 +1,126 @@
+<div class="content">
+  <p-card>
+    <div class="access-content">
+      <div class="access-title">Lecturer Access Code</div>
+      <p class="access-description">
+        Lecturer can use this code during registration to get the required
+        authorization
+      </p>
+      <div class="input-container">
+        <div
+          *ngIf="selectedCode.expirationDate"
+          [ngClass]="{
+            expired:
+              selectedCode.expirationDate &&
+              !selectedCode.isActive &&
+              isExpired(selectedCode?.expirationDate)
+          }"
+          class="deadline pi pi-calendar-clock"
+          [escape]="false"
+          [pTooltip]="tooltipContent"
+        ></div>
+        <ng-template #tooltipContent>
+          <div class="dateToolTip">
+            <h4>Created</h4>
+            <p>{{ selectedCode?.creationDate | date : "dd-MM-yy HH:mm" }}</p>
+            <h4>Expires</h4>
+            <p *ngIf="selectedCode?.expirationDate">
+              {{ selectedCode?.expirationDate | date : "dd-MM-yy HH:mm" }}
+            </p>
+          </div>
+        </ng-template>
+        <p-inputOtp
+          [ngModel]="selectedCode?.code"
+          [length]="9"
+          style="gap: 0"
+          id="codeInput"
+        >
+          <ng-template
+            pTemplate="input"
+            let-token
+            let-events="events"
+            let-index="index"
+          >
+            <input
+              pInputText
+              type="text"
+              [disabled]="true"
+              [maxLength]="1"
+              (input)="events.input($event)"
+              (keydown)="events.keydown($event)"
+              [attr.value]="token"
+              class="custom-otp-input"
+            />
+            <div *ngIf="index === 3" class="otp-separator">
+              <i class="pi pi-minus"></i>
+            </div>
+
+            <div *ngIf="index === 6" class="otp-separator">
+              <i class="pi pi-minus"></i>
+            </div>
+          </ng-template>
+        </p-inputOtp>
+      </div>
+      <div class="access-buttons">
+        <p-button
+          label="New Code"
+          (click)="showGenerateAccessCodeDialog()"
+          [link]="true"
+        ></p-button>
+        <p-dialog
+          header="Generate new code"
+          [(visible)]="accessCodeVisible"
+          [modal]="true"
+          [style]="{ padding: '4px' }"
+          [draggable]="false"
+          [resizable]="false"
+        >
+          <div class="expiration-date">
+            <label for="icondisplay"> Expiration Date </label>
+            <p-calendar
+              *ngIf="expirationDate"
+              appendTo="body"
+              [showTime]="true"
+              [(ngModel)]="expirationDate"
+              [iconDisplay]="'input'"
+              [showIcon]="true"
+              inputId="icondisplay"
+            ></p-calendar>
+          </div>
+          <div class="buttons">
+            <p-button (onClick)="hideGenerateAccessCodeDialog()" [link]="true"
+              >Cancel</p-button
+            >
+            <p-button (onClick)="generateNewCode()">Generate</p-button>
+          </div>
+        </p-dialog>
+        <p-button
+          label="Copy Code"
+          (onClick)="onCopyCodeToClipboard()"
+        ></p-button>
+      </div>
+      <div>
+        <p-divider></p-divider>
+        <p-button link="true" (click)="showHistoryDialog()"
+          >See codes history</p-button
+        >
+        <p-dialog
+          [draggable]="false"
+          (onMaximize)="onHistoryMaximize($event)"
+          [modal]="true"
+          header="Access codes history"
+          [(visible)]="historyVisible"
+          [style]="{ padding: '4px', minHeight: '70vh' }"
+          [maximizable]="true"
+        >
+          <app-access-code-history
+            [accessCodes]="accessCodes"
+            [rows]="historyRows"
+          ></app-access-code-history>
+        </p-dialog>
+      </div>
+    </div>
+  </p-card>
+
+  <img src="../../../assets/access-code-image.svg" />
+</div>

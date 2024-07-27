@@ -1,0 +1,158 @@
+<div *ngIf="editableCourse">
+  <form [formGroup]="addCourseForm" *ngIf="!isLoading">
+    <div class="course-edit-container">
+      <div class="form-group" formGroupName="step1">
+        <div class="form-control" appendTo="body">
+          <label for="degree">Degree</label>
+          <p-dropdown
+            (onChange)="onDegreeSelected($event)"
+            formControlName="degreeId"
+            optionValue="id"
+            id="degree"
+            [style]="{ width: '420px' }"
+            appendTo="body"
+            class="p-inputtext-sm"
+            [options]="degrees"
+            [showClear]="true"
+            optionLabel="name"
+            placeholder="Degree"
+          ></p-dropdown>
+        </div>
+        <div class="form-control">
+          <label for="name">Name</label>
+          <input
+            formControlName="name"
+            [style]="{ width: '100%' }"
+            class="form-input"
+            id="name"
+            pInputText
+          />
+        </div>
+        <div class="form-control">
+          <label for="description">Description</label>
+          <textarea
+            formControlName="description"
+            [style]="{ minHeight: '100px' }"
+            rows="5"
+            class="form-input"
+            id="description"
+            cols="30"
+            pInputTextarea
+            [autoResize]="true"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="course-edit-container" appendTo="body">
+      <div class="course-edit-container side-by-side" formGroupName="step2">
+        <div class="form-group dropdown-row">
+          <div class="form-control" appendTo="body">
+            <label for="departament">Departament</label>
+            <p-dropdown
+              (onChange)="onDepartamentSelected($event)"
+              [style]="{ width: '200px' }"
+              appendTo="body"
+              class="p-inputtext-sm"
+              [options]="departments"
+              [showClear]="true"
+              formControlName="departmentId"
+              optionValue="id"
+              placeholder="Departament"
+              optionLabel="name"
+            ></p-dropdown>
+          </div>
+
+          <div class="form-control" appendTo="body">
+            <label for="studyProgram">Study program</label>
+            <p-dropdown
+              [style]="{ width: '200px' }"
+              appendTo="body"
+              class="p-inputtext-sm"
+              [options]="filteredStudyPrograms"
+              [showClear]="true"
+              placeholder="Study program"
+              formControlName="studyProgramId"
+              optionValue="id"
+              optionLabel="name"
+            ></p-dropdown>
+          </div>
+        </div>
+
+        <div class="form-group dropdown-row">
+          <div class="form-control" appendTo="body">
+            <label for="year">Year</label>
+            <p-dropdown
+              (onChange)="onYearSelected($event)"
+              [style]="{ width: '200px' }"
+              appendTo="body"
+              class="p-inputtext-sm"
+              [options]="filteredYears"
+              [showClear]="true"
+              placeholder="Year"
+              formControlName="yearId"
+              optionValue="id"
+              optionLabel="name"
+            ></p-dropdown>
+          </div>
+          <div class="form-control" appendTo="body">
+            <label for="semester">Semester</label>
+            <p-dropdown
+              [style]="{ width: '200px' }"
+              appendTo="body"
+              class="p-inputtext-sm"
+              [options]="filteredSemesters"
+              [showClear]="true"
+              placeholder="Semester"
+              optionLabel="name"
+              formControlName="semesterId"
+              optionValue="id"
+            ></p-dropdown>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="course-edit-container">
+        <div class="form-group" formGroupName="step3">
+          <div class="form-control">
+            <label for="email">Select CoAuthors</label>
+            <p-multiSelect
+              [style]="{ maxWidth: '350px' }"
+              [options]="lecturers"
+              appendTo="body"
+              formControlName="coAuthors"
+              optionLabel="email"
+              optionValue="id"
+              placeholder="Select CoAuthors"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="checkbox-container" formGroupName="step3">
+      <p-checkbox
+        formControlName="isActive"
+        [binary]="true"
+        inputId="isActive"
+      />
+      <label for="isActive">Is Active</label>
+    </div>
+
+    <div class="save-assignment-button">
+      <p-button
+        [disabled]="!addCourseForm.valid"
+        label="Save"
+        icon="pi pi-save"
+        iconPos="right"
+        (click)="editAssignment()"
+        [style]="{ width: '12.5rem' }"
+      />
+    </div>
+  </form>
+  <div *ngIf="isLoading" class="spinner">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</div>
